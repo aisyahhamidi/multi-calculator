@@ -13,7 +13,7 @@
 	<section class="container">
 		<div class="claculator">
 			<div class="forms">				
-					<form action="index.php" method="post">
+					<form action="indexbmi.php" method="post">
 						<h1 class="tittle">Kalkulator BMI</h1><br>
 						<h4 class="text">BMI jest wskaźnikiem, który jest obliczany przez porównanie wzrostu z masy ciała</h4>
 						<input class="imput" placeholder="Podaj Imię" name="Name" type="text"><br>
