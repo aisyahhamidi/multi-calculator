@@ -1,3 +1,4 @@
+<?php require_once ('inc/header.php')?>
 <?php
 function calculateElectricityCost($voltage, $current, $rate) {
     $power = ($voltage * $current) / 1000; // Moving the decimal point three times to the left for kWh unit conversion
