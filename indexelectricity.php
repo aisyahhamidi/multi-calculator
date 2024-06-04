@@ -1,6 +1,7 @@
-<?php require_once ('inc/header.php')?>
+<?php require_once('inc/header.php') ?>
 <?php
-function calculateElectricityCost($voltage, $current, $rate) {
+function calculateElectricityCost($voltage, $current, $rate)
+{
     $power = ($voltage * $current) / 1000; // Moving the decimal point three times to the left for kWh unit conversion
     $energy = $power * 1 * 1000; // Assuming 1 hour
     $totalCharge = $energy * ($rate / 100);
@@ -41,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,79 +51,103 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <style>
         body {
             padding: 20px;
-            font-family: Times New Roman;
+            /* font-family: Times New Roman; */
         }
+
         .container {
             max-width: 800px;
             margin: auto;
         }
+
+        .calculator-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
         table {
             width: 100%;
             margin-top: 20px;
             border-collapse: collapse;
         }
-        th, td {
+
+        th,
+        td {
             padding: 12px;
             text-align: center;
         }
+
         th {
-            background-color: #3498db; /* Bold Blue Color */
-            color: #ffffff; /* Text Color for Bold Blue */
+            background-color: #3498db;
+            /* Bold Blue Color */
+            color: #ffffff;
+            /* Text Color for Bold Blue */
             font-weight: bold;
         }
+
         td {
             background-color: #fff;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
         }
+
         tr:nth-child(even) td {
             background-color: #f2f2f2;
         }
+
         .table-container {
             margin-top: 30px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
+        <div class="calculator-container">
         <h1 class="mt-4">Electricity Calculator</h1>
-        <form action="" method="post">
-            <div class="form-group">
-                <label for="voltage">Voltage (V):</label>
-                <input type="number" step="any" class="form-control" id="voltage" name="voltage" value="<?php echo $voltage; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="current">Current (A):</label>
-                <input type="number" step="any" class="form-control" id="current" name="current" value="<?php echo $current; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="rate">Current Rate (sen/kWh):</label>
-                <input type="number" step="any" class="form-control" id="rate" name="rate" value="<?php echo $rate; ?>" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Calculate</button>
-        </form>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="voltage">Voltage (V):</label>
+                    <input type="number" step="any" class="form-control" id="voltage" name="voltage" value="<?php echo $voltage; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="current">Current (A):</label>
+                    <input type="number" step="any" class="form-control" id="current" name="current" value="<?php echo $current; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="rate">Current Rate (sen/kWh):</label>
+                    <input type="number" step="any" class="form-control" id="rate" name="rate" value="<?php echo $rate; ?>" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
 
-        <?php if (!empty($results)) { ?>
-            <p>POWER: <?php echo number_format($results['power'], 5); ?> kW</p>
-            <p>RATE: <?php echo number_format($results['ratePerHour'], 3); ?> RM</p>
-            <table>
-                <tr>
-                    <th># Hour</th>
-                    <th>Energy (kWh)</th>
-                    <th>TOTAL (RM)</th>
-                </tr>
-                <?php
-                foreach ($results['hourlyCharges'] as $hourlyCharge) {
-                    echo "<tr>";
-                    echo "<td>{$hourlyCharge['hour']}</td>";
-                    echo "<td>" . number_format($hourlyCharge['hourlyEnergy'], 5) . "</td>";
-                    echo "<td>" . number_format($hourlyCharge['hourlyCharge'], 2) . "</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </table>
-        <?php } ?>
+            <?php if (!empty($results)) { ?>
+                <p>POWER: <?php echo number_format($results['power'], 5); ?> kW</p>
+                <p>RATE: <?php echo number_format($results['ratePerHour'], 3); ?> RM</p>
+                <table>
+                    <tr>
+                        <th># Hour</th>
+                        <th>Energy (kWh)</th>
+                        <th>TOTAL (RM)</th>
+                    </tr>
+                    <?php
+                    foreach ($results['hourlyCharges'] as $hourlyCharge) {
+                        echo "<tr>";
+                        echo "<td>{$hourlyCharge['hour']}</td>";
+                        echo "<td>" . number_format($hourlyCharge['hourlyEnergy'], 5) . "</td>";
+                        echo "<td>" . number_format($hourlyCharge['hourlyCharge'], 2) . "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </table>
+            <?php } ?>
+        </div>
     </div>
 </body>
+
 </html>
