@@ -53,7 +53,7 @@
 		<a href="./"><img width="80px" src="img/logo.png" /></a>
 		<h1><?php echo $site_name ;?></h1>
 		<p><?php echo "$site_descr" ;?></p>
-		<a class="btn btn-danger" href="indexloan.php" >Home</a>  
-		<a class="btn btn-danger" href="indexbmi.php" >About</a>  
-		<a class="btn btn-danger" href="indexelectricity.php" >Contact</a>
+		<a class="btn btn-danger" href="indexloan.php" >Loan Calculator</a>  
+		<a class="btn btn-danger" href="indexbmi.php" >BMI Calculator</a>  
+		<a class="btn btn-danger" href="indexelectricity.php" >Electricity Calculator</a>
 	</div>
