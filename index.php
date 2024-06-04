@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php require_once("loan_calculator/indexloan.php"); ?>
-<?php require_once("bmi_calculator/indexbmi.php"); ?>
-<?php require_once("electricity_calculator/indexelectricity.php"); ?>
+
 
 
 <head>
