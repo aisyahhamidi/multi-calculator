@@ -15,11 +15,11 @@
 		<div class="claculator">
 			<div class="forms">				
 					<form action="indexbmi.php" method="post">
-						<h1 class="tittle">Kalkulator BMI</h1><br>
-						<h4 class="text">BMI jest wskaźnikiem, który jest obliczany przez porównanie wzrostu z masy ciała</h4>
-						<input class="imput" placeholder="Podaj Imię" name="Name" type="text"><br>
-						<input id="input" class="imput" placeholder="Podaj wzrost [m]" name="Hieght" type="text"><br>
-						<input id="input" class="imput" placeholder="Podaj wagę [kg]" name="weight" type="text"><br>
+						<h1 class="tittle">Calculator BMI</h1><br>
+						<h4 class="text">BMI is an indicator that is calculated by comparing height with body weight</h4>
+						<input class="imput" placeholder="Enter name" name="Name" type="text"><br>
+						<input id="input" class="imput" placeholder="Enter height [m]" name="Hieght" type="text"><br>
+						<input id="input" class="imput" placeholder="Enter weight [kg]" name="weight" type="text"><br>
 						<input class="confirm" type="submit">
 					</form>
 			</div>
@@ -35,25 +35,27 @@
 						$weight = $_POST['weight'];
 						$bmi = $_POST['weight']/$Hieght;
 
-						echo "Cześć $name";
+						echo "Hi $name";
 					?>
 					<?php
-						echo "Twoje BMI wynosi: $bmi"
+						echo "your BMI is: $bmi"
 					?>
 				</h1>
 
 				<h2 class="secondText">
 					<?php
 						if($bmi  < 18.5)
-						   echo "$name zaobserwowaliśmy że możesz być niedożywiony";
-						elseif($bmi  > 18.5 && $bmi  < 24.9)
-							echo "$name wszystko jest w normie";
-						elseif($bmi  > 24.9 && $bmi  < 29.9)
-							echo "$name zaobserwowaliśmy że możesz mieć nadwagę";
-						elseif($bmi  > 29.9 && $bmi  < 34.9)
-							echo "$name zaobserwowaliśmy że możesz mieć problemy z nadwagą";
+						   echo "$name we have observed that you may be underweight";
+						elseif($bmi  >= 18.5 && $bmi  <= 24.9)
+							echo "$name everything is normal";
+						elseif($bmi  > 24.9 && $bmi  <= 29.9)
+							echo "$name we have noticed that you may be overweight";
+						elseif($bmi  > 29.9 && $bmi  <= 34.9)
+							echo "$name we have noticed that you may have problems with being obese class 1";
+						elseif($bmi  > 34.9 && $bmi  <= 39.9)
+							echo "$name we have noticed that you may have problems with being obese class 2";
 						else
-							echo "$name zaobserwowaliśmy że możesz mieć duże problemy z nadwagą";
+							echo "$name we have noticed that you may have big problems with being obese class 3";
 					?>
 				</h2>
 			</div>
